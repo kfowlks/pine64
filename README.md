@@ -15,12 +15,21 @@ apt-get install wireless-tools
 /etc/network/interfaces.d/wlan0
 ~~~~
 auto wlan0
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant.conf
-iface default inet dhcp
+iface wlan0 inet dhcp
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+iface wlan1 inet manual
 ~~~~
-
+# wpa_supplicant.conf
+/etc/wpa_supplicant/wpa_supplicant.conf
+~~~~
+#ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+#update_config=1
+network={
+   ssid="kktravel"
+   psk=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   key_mgmt=WPA-PSK
+}
+~~~~
 # Configure Wifi Module
 
 # Show all network interfaces
